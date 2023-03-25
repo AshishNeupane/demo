@@ -28,10 +28,8 @@ public class DealController {
 	@Autowired
 	private DealService dealService;
 	
-	 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "CUSTOM MESSAGE HERE")
-	 @ExceptionHandler(HttpMessageNotReadableException.class)
 	 @PostMapping("/deal")
-	    public RestMessage createInitialUser(@Valid @RequestBody Deal deal, Locale locale,HttpMessageNotReadableException ex) throws RestMessageException
+	    public RestMessage createInitialUser(@Valid @RequestBody Deal deal, Locale locale) throws RestMessageException
 	    {
 		 if(dealService.createDeal(deal)!=null) {
 	            String successMessage = "Deal Successfully addded";
